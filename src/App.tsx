@@ -17,7 +17,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <GlobalSoundEffects />
-      <BrowserRouter>
+      <BrowserRouter basename="/portfolio">
         <Header />
         <main>
           <Routes>
