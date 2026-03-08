@@ -60,8 +60,9 @@ const experiences = [
 ];
 
 const ExperienceSection = () => (
-  <section id="experience" className="py-20 md:py-28 bg-section-alt">
-    <div className="container">
+  <section id="experience" className="py-20 md:py-28 bg-section-alt relative overflow-hidden">
+    <BackgroundShapes variant="diamonds" />
+    <div className="container relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

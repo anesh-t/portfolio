@@ -42,8 +42,9 @@ const education = [
 ];
 
 const EducationSection = () => (
-  <section id="education" className="py-20 md:py-28 bg-background">
-    <div className="container">
+  <section id="education" className="py-20 md:py-28 bg-background relative overflow-hidden">
+    <BackgroundShapes variant="rings" />
+    <div className="container relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

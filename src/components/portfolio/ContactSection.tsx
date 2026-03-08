@@ -7,6 +7,7 @@ const ContactSection = () => (
     {/* Gradient background */}
     <div className="absolute inset-0 bg-gradient-hero" />
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(16_84%_62%_/_0.15),_transparent_50%)]" />
+    <BackgroundShapes variant="blobs" />
 
     <div className="container relative z-10">
       <motion.div

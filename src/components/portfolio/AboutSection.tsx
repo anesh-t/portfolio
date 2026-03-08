@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { MapPin, GraduationCap, Award, BookOpen, Globe, Briefcase } from "lucide-react";
+import BackgroundShapes from "./BackgroundShapes";
 
 const highlights = [
   { icon: Briefcase, label: "IMF Extern", sub: "Decision Support & BI", color: "from-blue-500 to-cyan-500" },
