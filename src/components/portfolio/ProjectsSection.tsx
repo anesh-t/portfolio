@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Trophy, ChevronDown, ChevronUp, Github } from "lucide-react";
+import BackgroundShapes from "./BackgroundShapes";
 import projectCfo from "@/assets/project-cfo-assistant.jpg";
 import projectSec from "@/assets/project-sec-analytics.jpg";
 import projectFundmate from "@/assets/project-fundmate.jpg";
