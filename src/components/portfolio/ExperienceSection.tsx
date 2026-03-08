@@ -88,7 +88,7 @@ const ExperienceSection = () => (
               >
                 {/* Timeline logo */}
                 <div className="absolute left-0 top-4 w-24 h-24 rounded-2xl bg-card border border-border shadow-card hidden md:flex items-center justify-center overflow-hidden">
-                  <img src={exp.logo} alt={exp.company} className="w-18 h-18 object-contain" style={{ width: '4.5rem', height: '4.5rem' }} />
+                  <img src={exp.logo} alt={exp.company} className="object-contain" style={{ width: exp.logo === logoImf ? '5.5rem' : '4.5rem', height: exp.logo === logoImf ? '5.5rem' : '4.5rem' }} />
                 </div>
 
                 <motion.div
