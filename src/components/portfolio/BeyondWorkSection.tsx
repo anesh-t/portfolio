@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
-import { Camera, Music, Car, Globe } from "lucide-react";
+import { Camera, Music, Car, Globe, Dumbbell, UtensilsCrossed, Gamepad2, Instagram } from "lucide-react";
 import lifestyleImage from "@/assets/lifestyle-anesh.jpg";
 
 const interests = [
+  { icon: Dumbbell, label: "Gym, Volleyball & Yoga" },
+  { icon: UtensilsCrossed, label: "Indian Cuisine" },
   { icon: Car, label: "Cars & Drives" },
-  { icon: Camera, label: "Photography" },
+  { icon: Camera, label: "FPV Drones" },
+  { icon: Music, label: "Tamil Music" },
   { icon: Globe, label: "Travel" },
-  { icon: Music, label: "Music" },
+  { icon: Gamepad2, label: "Chess" },
 ];
 
 const BeyondWorkSection = () => (
