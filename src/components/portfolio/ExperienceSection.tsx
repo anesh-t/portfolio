@@ -84,11 +84,11 @@ const ExperienceSection = () => (
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
-                className="relative md:pl-24"
+                className="relative md:pl-28"
               >
                 {/* Timeline logo */}
-                <div className="absolute left-0 top-4 w-20 h-20 rounded-2xl bg-card border border-border shadow-card hidden md:flex items-center justify-center overflow-hidden">
-                  <img src={exp.logo} alt={exp.company} className="w-14 h-14 object-contain" />
+                <div className="absolute left-0 top-4 w-24 h-24 rounded-2xl bg-card border border-border shadow-card hidden md:flex items-center justify-center overflow-hidden">
+                  <img src={exp.logo} alt={exp.company} className="w-18 h-18 object-contain" style={{ width: '4.5rem', height: '4.5rem' }} />
                 </div>
 
                 <motion.div
