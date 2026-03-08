@@ -87,8 +87,8 @@ const ExperienceSection = () => (
                 className="relative md:pl-20"
               >
                 {/* Timeline logo */}
-                <div className="absolute left-0 top-4 w-16 h-16 rounded-2xl bg-card border border-border shadow-card hidden md:flex items-center justify-center overflow-hidden">
-                  <img src={exp.logo} alt={exp.company} className="w-10 h-10 object-contain" />
+                <div className="absolute left-0 top-4 w-20 h-20 rounded-2xl bg-card border border-border shadow-card hidden md:flex items-center justify-center overflow-hidden">
+                  <img src={exp.logo} alt={exp.company} className="w-14 h-14 object-contain" />
                 </div>
 
                 <motion.div
