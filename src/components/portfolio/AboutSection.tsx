@@ -4,13 +4,6 @@ import BackgroundShapes from "./BackgroundShapes";
 
 const tags = ["Data Analytics", "Business Intelligence", "AI-Driven Decision Systems"];
 
-const stats = [
-  { icon: Briefcase, value: "IMF", label: "Extern · Decision Support" },
-  { icon: GraduationCap, value: "3.74", label: "GPA · MS @ GWU" },
-  { icon: Award, value: "$22K", label: "GW Fellowship" },
-  { icon: BookOpen, value: "26", label: "Citations · Frontiers in AI" },
-];
-
 const languages = [
   { lang: "English", level: "Full Professional" },
   { lang: "French", level: "Limited Working" },
