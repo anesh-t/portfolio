@@ -7,32 +7,6 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
 
   useEffect(() => {
     playSplashSound();
-      const gain = ctx.createGain();
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.frequency.setValueAtTime(880, ctx.currentTime);
-      osc.type = "sine";
-      gain.gain.setValueAtTime(0.08, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
-      osc.start(ctx.currentTime);
-      osc.stop(ctx.currentTime + 0.3);
-
-      // Second tone for a "ding" effect
-      setTimeout(() => {
-        const osc2 = ctx.createOscillator();
-        const gain2 = ctx.createGain();
-        osc2.connect(gain2);
-        gain2.connect(ctx.destination);
-        osc2.frequency.setValueAtTime(1320, ctx.currentTime);
-        osc2.type = "sine";
-        gain2.gain.setValueAtTime(0.06, ctx.currentTime);
-        gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
-        osc2.start(ctx.currentTime);
-        osc2.stop(ctx.currentTime + 0.4);
-      }, 150);
-    } catch (e) {
-      // Audio not supported, skip
-    }
 
     const timer = setTimeout(() => setPhase("exit"), 1800);
     return () => clearTimeout(timer);
