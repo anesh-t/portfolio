@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 
 type Variant = "circles" | "diamonds" | "waves" | "dots" | "triangles" | "rings" | "blobs" | "crosses";
