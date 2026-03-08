@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import lifestyleImage from "@/assets/lifestyle-anesh.jpg";
 import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [
