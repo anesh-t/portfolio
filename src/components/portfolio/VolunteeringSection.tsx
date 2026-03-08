@@ -39,26 +39,48 @@ const VolunteeringSection = () => (
         {volunteer.map((v, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl bg-card border border-border shadow-card overflow-hidden"
+            transition={{ duration: 0.7 }}
+            whileHover={{ y: -3 }}
+            className="rounded-2xl bg-card border border-border shadow-card hover:shadow-card-hover transition-all overflow-hidden"
           >
             {/* Event image banner */}
-            <div className="relative h-48 md:h-56 overflow-hidden">
-              <img src={volunteerImg} alt="IMF Spring Meetings" className="w-full h-full object-cover" />
+            <div className="relative h-48 md:h-56 overflow-hidden group/banner">
+              <motion.img
+                src={volunteerImg}
+                alt="IMF Spring Meetings"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover/banner:scale-110"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
-              <div className="absolute bottom-4 left-6 flex items-center gap-3">
-                <div className="w-20 h-20 rounded-xl bg-card/90 backdrop-blur-md border border-border flex items-center justify-center">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="absolute bottom-4 left-6 flex items-center gap-3"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 3 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="w-20 h-20 rounded-xl bg-card/90 backdrop-blur-md border border-border flex items-center justify-center"
+                >
                   <img src={logoImf} alt="IMF" className="w-14 h-14 object-contain" />
-                </div>
+                </motion.div>
                 <div>
                   <p className="font-bold text-foreground text-lg">{v.organization}</p>
                   <p className="text-sm text-accent font-medium flex items-center gap-1">
-                    <Heart className="w-3.5 h-3.5" /> {v.cause}
+                    <motion.div
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                    >
+                      <Heart className="w-3.5 h-3.5" />
+                    </motion.div>
+                    {v.cause}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             <div className="p-6">
@@ -71,10 +93,17 @@ const VolunteeringSection = () => (
               </div>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 {v.bullets.map((b, j) => (
-                  <li key={j} className="flex gap-2">
+                  <motion.li
+                    key={j}
+                    initial={{ opacity: 0, x: -15 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + j * 0.08 }}
+                    className="flex gap-2"
+                  >
                     <span className="text-accent mt-1 shrink-0 text-lg leading-none">•</span>
                     <span>{b}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>

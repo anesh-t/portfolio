@@ -27,57 +27,106 @@ const PublicationsSection = () => (
 
         {/* Publication card */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="p-6 md:p-8 rounded-2xl bg-card border border-border shadow-card relative overflow-hidden"
+          transition={{ duration: 0.7 }}
+          whileHover={{ y: -3 }}
+          className="p-6 md:p-8 rounded-2xl bg-card border border-border shadow-card hover:shadow-card-hover transition-all relative overflow-hidden"
         >
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 to-indigo-500" />
 
-          <div className="flex items-center gap-2 mb-1">
-            <span className="px-3 py-1 rounded-full bg-violet-500/10 text-violet-500 text-xs font-bold border border-violet-500/20">
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="flex items-center gap-2 mb-1"
+          >
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              className="px-3 py-1 rounded-full bg-violet-500/10 text-violet-500 text-xs font-bold border border-violet-500/20"
+            >
               Peer-Reviewed Journal
-            </span>
-          </div>
+            </motion.span>
+          </motion.div>
 
-          <h3 className="text-xl font-bold text-foreground mt-4 leading-snug">
+          <motion.h3
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="text-xl font-bold text-foreground mt-4 leading-snug"
+          >
             Analyzing Classification and Feature Selection Strategies for Diabetes Prediction across Diverse Diabetes Datasets
-          </h3>
-          <p className="text-sm text-accent font-semibold mt-2 flex items-center gap-1.5">
-            <BookOpen className="w-4 h-4" /> Frontiers in Artificial Intelligence · Aug 21, 2024
-          </p>
+          </motion.h3>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="text-sm text-accent font-semibold mt-2 flex items-center gap-1.5"
+          >
+            <motion.div whileHover={{ rotate: 15 }} transition={{ type: "spring" }}>
+              <BookOpen className="w-4 h-4" />
+            </motion.div>
+            Frontiers in Artificial Intelligence · Aug 21, 2024
+          </motion.p>
 
-          <p className="text-sm text-muted-foreground mt-4 leading-relaxed max-w-3xl">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="text-sm text-muted-foreground mt-4 leading-relaxed max-w-3xl"
+          >
             Analyzed ML models (RF, XGB, LR, GB, SVM) for diabetes prediction, achieving precision/recall up to 0.9. Employed LIME, SHAP, Chi-square for critical predictor identification, enhancing model transparency in healthcare decision-making.
-          </p>
-          <p className="text-xs text-muted-foreground mt-2">
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.55 }}
+            className="text-xs text-muted-foreground mt-2"
+          >
             Co-authors: Saravana Kumar I J, Rithik R. Ragupathi, Sundaravelan S
-          </p>
+          </motion.p>
 
           {/* Metrics grid */}
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mt-8">
-            {metrics.map((metric) => (
+            {metrics.map((metric, i) => (
               <motion.div
                 key={metric.label}
-                whileHover={{ scale: 1.05 }}
-                className="relative flex flex-col items-center p-4 rounded-xl bg-muted border border-border text-center overflow-hidden"
+                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 + i * 0.1 }}
+                whileHover={{ scale: 1.1, y: -4 }}
+                className="relative flex flex-col items-center p-4 rounded-xl bg-muted border border-border text-center overflow-hidden cursor-default group/metric"
               >
-                <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${metric.gradient}`} />
-                <metric.icon className="w-4 h-4 text-accent mb-2" />
+                <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${metric.gradient} transition-all duration-300 group-hover/metric:h-1`} />
+                <motion.div whileHover={{ rotate: 15, scale: 1.2 }} transition={{ type: "spring", stiffness: 300 }}>
+                  <metric.icon className="w-4 h-4 text-accent mb-2" />
+                </motion.div>
                 <span className="text-2xl font-bold text-foreground">{metric.value}</span>
                 <span className="text-xs text-muted-foreground">{metric.label}</span>
               </motion.div>
             ))}
           </div>
 
-          <a
+          <motion.a
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8 }}
+            whileHover={{ x: 4 }}
             href="https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2024.1421751/full"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-accent hover:underline font-semibold text-sm mt-6"
           >
             Read Full Paper <ExternalLink className="w-3.5 h-3.5" />
-          </a>
+          </motion.a>
         </motion.div>
 
       </motion.div>
