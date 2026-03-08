@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Linkedin, Github, ExternalLink, Code2, Terminal, Send } from "lucide-react";
+import BackgroundShapes from "./BackgroundShapes";
 
 const ContactSection = () => (
   <section id="contact" className="py-20 md:py-28 relative overflow-hidden">
