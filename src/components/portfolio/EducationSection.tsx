@@ -6,10 +6,13 @@ const education = [
     degree: "Master of Science, Business Analytics",
     school: "George Washington University",
     department: "School of Business",
-    period: "Aug 2024 – Dec 2025",
+    period: "Aug 2024 – Jan 2026",
     location: "Washington, DC",
     gpa: "3.74 / 4.0",
-    honors: ["GW Business Fellowship Award", "Community Choice Award – Fall 2025 GenAI Case Competition"],
+    honors: [
+      "GW Business Fellowship Award — Merit-based, ~$22,000 (35% tuition)",
+      "Community Choice Award – Fall 2025 GenAI Case Competition",
+    ],
     coursework: [
       "Machine Learning",
       "Data Warehousing",
@@ -66,13 +69,11 @@ const EducationSection = () => (
               className="relative p-6 md:p-8 rounded-xl bg-card border border-border shadow-card hover:shadow-card-hover transition-all"
             >
               <div className="flex flex-col md:flex-row md:items-start gap-5">
-                {/* Icon */}
                 <div className="shrink-0 w-14 h-14 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
                   <GraduationCap className="w-7 h-7 text-accent" />
                 </div>
 
                 <div className="flex-1 space-y-4">
-                  {/* Header */}
                   <div>
                     <h3 className="text-xl font-bold text-foreground">{edu.degree}</h3>
                     <p className="text-base text-accent font-medium">{edu.school}</p>
@@ -92,7 +93,6 @@ const EducationSection = () => (
                     </div>
                   </div>
 
-                  {/* Honors */}
                   {edu.honors.length > 0 && (
                     <div className="space-y-1.5">
                       {edu.honors.map((honor, j) => (
@@ -103,7 +103,6 @@ const EducationSection = () => (
                     </div>
                   )}
 
-                  {/* Coursework */}
                   <div>
                     <p className="text-sm font-semibold text-foreground mb-2 flex items-center gap-1.5">
                       <BookOpen className="w-4 h-4 text-accent" /> Relevant Coursework

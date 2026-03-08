@@ -19,18 +19,18 @@ interface Project {
 
 const featuredProjects: Project[] = [
   {
-    title: "CFO Assistant – AI-Enabled Analytics & Decision Support",
-    award: "GW AI Case Competition – Winners",
+    title: "CFO Intelligence Platform – AI Decision Agent",
+    award: "Community Choice Award – GW GenAI Competition",
     period: "Sep 2025 – Dec 2025",
     image: projectCfo,
     featured: true,
     description:
-      "End-to-end AI platform for CFO-style financial analysis across 5 large-cap companies, integrating structured financial data in PostgreSQL + Pgvector with unstructured SEC filings and a Neo4j knowledge graph.",
-    tech: ["Python", "LangChain", "Pgvector", "Neo4j", "FastAPI", "AWS Bedrock", "SageMaker"],
+      "AI-powered decision intelligence agent for non-technical business users enabling natural-language financial analysis, peer benchmarking, and macroeconomic context with transparent, explainable outputs.",
+    tech: ["Python", "LangChain", "LangGraph", "Neo4j", "Pgvector", "FastAPI", "AWS Bedrock", "RAG", "Text-to-SQL"],
     highlights: [
-      "RAG + NL-to-SQL analytics with source-grounded outputs",
-      "Reduced manual financial analysis by 50–60%",
-      "Schema-aware prompting with confidence thresholds",
+      "Community Choice Award – judged by Capital One, EY, FI Consulting, Mizuho",
+      "Orchestrates RAG, Text-to-SQL, and agentic workflows for client-ready insights",
+      "Team: Carissa Paul, Rachel Aska, Isheanesu Chiworeso, Anesh Thangaraj",
     ],
     github: "https://github.com/anesh-t",
   },
@@ -49,7 +49,7 @@ const featuredProjects: Project[] = [
     github: "https://github.com/anesh-t/SEC-Financial-Data-Modeling-Visualization",
   },
   {
-    title: "FundMate – Internal Copilot + RAG Assistant",
+    title: "FundMate – Internal Copilot + RAG Assistant (IMF)",
     period: "Jul 2025 – Dec 2025",
     image: projectFundmate,
     featured: true,
