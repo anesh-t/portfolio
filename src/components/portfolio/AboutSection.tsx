@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Globe, Briefcase, GraduationCap, Award, BookOpen } from "lucide-react";
+import { MapPin, Globe } from "lucide-react";
 import BackgroundShapes from "./BackgroundShapes";
 
 const tags = ["Data Analytics", "Business Intelligence", "AI-Driven Decision Systems"];
