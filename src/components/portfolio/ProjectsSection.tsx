@@ -103,7 +103,11 @@ const FeaturedCard = ({ project, i }: { project: Project; i: number }) => (
     )}
     <div className="p-6 flex flex-col flex-1">
       <h3 className="font-bold text-foreground mb-1 group-hover:text-accent transition-colors">
-        {project.title}
+        {project.github ? (
+          <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+            {project.title}
+          </a>
+        ) : project.title}
       </h3>
       {project.period && (
         <p className="text-xs text-muted-foreground mb-3">{project.period}</p>
