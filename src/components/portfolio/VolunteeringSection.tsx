@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
+import BackgroundShapes from "./BackgroundShapes";
 import volunteerImg from "@/assets/volunteer-imf.jpg";
 import logoImf from "@/assets/logo-imf.png";
 
