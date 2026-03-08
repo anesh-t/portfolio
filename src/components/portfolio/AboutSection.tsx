@@ -1,15 +1,8 @@
 import { motion } from "framer-motion";
-import { MapPin, Globe, Briefcase, GraduationCap, Award, BookOpen } from "lucide-react";
+import { MapPin, Globe } from "lucide-react";
 import BackgroundShapes from "./BackgroundShapes";
 
 const tags = ["Data Analytics", "Business Intelligence", "AI-Driven Decision Systems"];
-
-const stats = [
-  { icon: Briefcase, value: "IMF", label: "Extern · Decision Support" },
-  { icon: GraduationCap, value: "3.74", label: "GPA · MS @ GWU" },
-  { icon: Award, value: "$22K", label: "GW Fellowship" },
-  { icon: BookOpen, value: "26", label: "Citations · Frontiers in AI" },
-];
 
 const languages = [
   { lang: "English", level: "Full Professional" },
@@ -19,7 +12,7 @@ const languages = [
 const AboutSection = () => (
   <section id="about" className="py-20 md:py-28 bg-section-warm relative overflow-hidden">
     <BackgroundShapes variant="circles" />
-    <div className="container relative z-10 max-w-3xl">
+    <div className="container relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -60,28 +53,6 @@ const AboutSection = () => (
             </span>
           ))}
         </div>
-
-        {/* Inline stats row */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.15 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"
-        >
-          {stats.map(({ icon: Icon, value, label }, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-3 p-3 rounded-xl bg-card border border-border"
-            >
-              <Icon className="w-5 h-5 text-accent shrink-0" />
-              <div>
-                <p className="text-sm font-bold text-foreground leading-tight">{value}</p>
-                <p className="text-[11px] text-muted-foreground leading-tight">{label}</p>
-              </div>
-            </div>
-          ))}
-        </motion.div>
 
         {/* Body copy */}
         <div className="space-y-4 text-muted-foreground leading-relaxed font-sans">
