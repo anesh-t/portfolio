@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { BookOpen, ExternalLink, Eye, Download, TrendingUp, Quote } from "lucide-react";
+import BackgroundShapes from "./BackgroundShapes";
 
 const metrics = [
   { icon: Quote, value: "26", label: "Citations", gradient: "from-violet-500 to-purple-500" },
