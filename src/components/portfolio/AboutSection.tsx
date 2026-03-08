@@ -1,11 +1,16 @@
 import { motion } from "framer-motion";
-import { MapPin, GraduationCap, Award, BookOpen } from "lucide-react";
+import { MapPin, GraduationCap, Award, BookOpen, Globe } from "lucide-react";
 
 const highlights = [
   { icon: GraduationCap, label: "MS Business Analytics", sub: "GWU · 3.74/4.0" },
-  { icon: Award, label: "GW Business Fellowship", sub: "Merit Award" },
-  { icon: BookOpen, label: "Published Researcher", sub: "Frontiers in AI (2024)" },
-  { icon: MapPin, label: "Washington, DC", sub: "Open to Relocate" },
+  { icon: Award, label: "GW Business Fellowship", sub: "$22K Merit Award" },
+  { icon: BookOpen, label: "Published Researcher", sub: "Frontiers in AI · 500+ Downloads" },
+  { icon: MapPin, label: "Arlington, VA", sub: "Open to Relocate" },
+];
+
+const languages = [
+  { lang: "English", level: "Full Professional" },
+  { lang: "French", level: "Limited Working" },
 ];
 
 const AboutSection = () => (
@@ -28,11 +33,23 @@ const AboutSection = () => (
               I'm a Business Data Analyst working at the intersection of core analytics and applied GenAI, focused on turning ambiguous business problems into decision-ready insights. My work combines strong foundations in data analysis, visualization, and business process optimization with hands-on experience building LLM-enabled analytics and AI agents.
             </p>
             <p>
-              At the <strong className="text-foreground">International Monetary Fund</strong>, I built Power BI dashboards, SQL-based validation workflows, and created FundMate — an internal Copilot + RAG knowledge assistant that reduced manual coordination by ~40%.
+              At the <strong className="text-foreground">International Monetary Fund</strong>, I built Power BI dashboards, SQL-based validation workflows, and created FundMate — an internal Copilot + RAG knowledge assistant that reduced manual coordination by ~40%. I also volunteered at the <strong className="text-foreground">IMF Spring Meetings 2025</strong>, supporting event operations for international delegates.
             </p>
             <p>
-              I hold a <strong className="text-foreground">B.Tech in Computer Science</strong> from VIT and am completing my <strong className="text-foreground">MS in Business Analytics</strong> at George Washington University. My published research on ML-based diabetes prediction appeared in Frontiers in Artificial Intelligence (2024).
+              I hold a <strong className="text-foreground">B.Tech in Computer Science</strong> from VIT and completed my <strong className="text-foreground">MS in Business Analytics</strong> at George Washington University (Jan 2026). My published research on ML-based diabetes prediction appeared in <strong className="text-foreground">Frontiers in Artificial Intelligence</strong> (2024) with 500+ downloads.
             </p>
+
+            {/* Languages */}
+            <div className="flex items-center gap-4 pt-2">
+              <Globe className="w-5 h-5 text-accent shrink-0" />
+              <div className="flex gap-3">
+                {languages.map(({ lang, level }) => (
+                  <span key={lang} className="px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-xs font-medium">
+                    {lang} · {level}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="lg:col-span-2 grid grid-cols-2 gap-4">

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Briefcase } from "lucide-react";
+import { Briefcase, Heart, Users } from "lucide-react";
 
 const experiences = [
   {
@@ -7,6 +7,7 @@ const experiences = [
     company: "International Monetary Fund (IMF)",
     period: "Jul 2025 – Dec 2025",
     location: "Washington, DC",
+    icon: Briefcase,
     bullets: [
       "Built Power BI dashboards and Excel trackers for multi-year planning and Annual/Spring Meetings, improving reporting accuracy by 30%.",
       "Developed SQL-based validation workflows (completeness checks, conflict detection, reconciliation) to reduce scheduling/approval errors.",
@@ -15,13 +16,28 @@ const experiences = [
     ],
   },
   {
-    role: "Vice President (Operations & Analytics)",
-    company: "Graduate Consulting Club, GWU",
+    role: "Volunteer Staff – Spring Meetings 2025",
+    company: "International Monetary Fund (IMF)",
+    period: "Apr 2025 · 1 month",
+    location: "Washington, DC",
+    icon: Heart,
+    bullets: [
+      "Managed front desk operations, greeting visitors, checking registrations, and directing attendees to sessions and events.",
+      "Supported attendee registration, information desks, and venue logistics for international delegates and media.",
+      "Collaborated with staff to uphold event security, emergency readiness, and VIP hospitality standards.",
+    ],
+  },
+  {
+    role: "Executive Vice President (Operations & Analytics)",
+    company: "GWU Graduate Consulting Club",
     period: "Jan 2025 – Dec 2025",
     location: "Washington, DC",
+    icon: Users,
     bullets: [
-      "Led operations for consulting workshops & case events (150+ attendees), coordinating speakers, logistics, and execution.",
-      "Designed tracking and reporting workflows to analyze attendance, engagement trends, and operational bottlenecks.",
+      "Led end-to-end operations for consulting workshops, case events, and speaker sessions (150+ attendees).",
+      "Coordinated speakers, alumni, logistics, and execution with minimal oversight.",
+      "Designed tracking and reporting workflows (Excel, dashboards) to analyze attendance, engagement trends, and operational bottlenecks.",
+      "Partnered with industry professionals and alumni to facilitate networking, mentorship, and panel discussions.",
     ],
   },
   {
@@ -29,6 +45,7 @@ const experiences = [
     company: "George Washington University",
     period: "Jan 2025 – Apr 2025",
     location: "Washington, DC",
+    icon: Briefcase,
     bullets: [
       "Delivered hands-on guidance for graduate-level analytics coursework using Tableau for 40+ students.",
       "Evaluated student dashboards using Tableau and Python (Pandas) to verify KPI relevance and insight clarity.",
@@ -39,6 +56,7 @@ const experiences = [
     company: "Thangam Auto Finance (Thangam Groups)",
     period: "Sep 2021 – Jun 2023",
     location: "Tirupur, India",
+    icon: Briefcase,
     bullets: [
       "Designed SQL-driven Tableau and Excel dashboards for a $5M+ loan portfolio with visibility into delinquency trends and approval status.",
       "Engineered data validation and reconciliation workflows improving reporting accuracy by 20% and reducing loan cycle time by 25%.",
@@ -49,9 +67,20 @@ const experiences = [
     company: "Vellore Institute of Technology",
     period: "Feb 2023 – May 2024",
     location: "Vellore, India",
+    icon: Briefcase,
     bullets: [
       "Contributed to published research on ML-based diabetes prediction in Frontiers in Artificial Intelligence (2024).",
       "Applied Explainable AI techniques (LIME, SHAP) to interpret model decisions and highlight key risk factors.",
+    ],
+  },
+  {
+    role: "Core Committee Member – CSED",
+    company: "Center for Social and Entrepreneurship Development, VIT",
+    period: "Jan 2021 – Feb 2024",
+    location: "Vellore, India",
+    icon: Users,
+    bullets: [
+      "Contributed to social impact and entrepreneurship initiatives over 3+ years at VIT.",
     ],
   },
 ];
@@ -75,42 +104,45 @@ const ExperienceSection = () => (
           <div className="absolute left-[19px] top-2 bottom-2 w-px bg-border hidden md:block" />
 
           <div className="space-y-8">
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="relative md:pl-12"
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-2.5 top-1.5 w-4 h-4 rounded-full bg-accent border-4 border-muted hidden md:block" />
+            {experiences.map((exp, i) => {
+              const Icon = exp.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="relative md:pl-12"
+                >
+                  {/* Timeline dot */}
+                  <div className="absolute left-2.5 top-1.5 w-4 h-4 rounded-full bg-accent border-4 border-muted hidden md:block" />
 
-                <div className="p-6 rounded-xl bg-card border border-border shadow-card hover:shadow-card-hover transition-shadow">
-                  <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
-                    <div>
-                      <h3 className="font-bold text-foreground">{exp.role}</h3>
-                      <p className="text-accent font-medium text-sm flex items-center gap-1.5">
-                        <Briefcase className="w-3.5 h-3.5" /> {exp.company}
-                      </p>
+                  <div className="p-6 rounded-xl bg-card border border-border shadow-card hover:shadow-card-hover transition-shadow">
+                    <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
+                      <div>
+                        <h3 className="font-bold text-foreground">{exp.role}</h3>
+                        <p className="text-accent font-medium text-sm flex items-center gap-1.5">
+                          <Icon className="w-3.5 h-3.5" /> {exp.company}
+                        </p>
+                      </div>
+                      <div className="text-right text-xs text-muted-foreground">
+                        <p>{exp.period}</p>
+                        <p>{exp.location}</p>
+                      </div>
                     </div>
-                    <div className="text-right text-xs text-muted-foreground">
-                      <p>{exp.period}</p>
-                      <p>{exp.location}</p>
-                    </div>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      {exp.bullets.map((b, j) => (
+                        <li key={j} className="flex gap-2">
+                          <span className="text-accent mt-1.5 shrink-0">•</span>
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    {exp.bullets.map((b, j) => (
-                      <li key={j} className="flex gap-2">
-                        <span className="text-accent mt-1.5 shrink-0">•</span>
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </motion.div>
