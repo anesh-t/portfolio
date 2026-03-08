@@ -117,7 +117,7 @@ const ExperienceSection = () => (
                       <img src={exp.logo} alt={exp.company} className="w-11 h-11 object-contain" />
                     </motion.div>
                     <div>
-                      <p className="text-accent font-semibold text-sm">{exp.company}</p>
+                      <a href={exp.link} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold text-sm inline-flex items-center gap-1 hover:underline"><span>{exp.company}</span><ExternalLink className="w-3 h-3" /></a>
                     </div>
                   </div>
 
