@@ -14,6 +14,8 @@ const education = [
     gpa: "3.74 / 4.0",
     logo: logoGwu,
     color: "from-indigo-500 to-blue-500",
+    link: "https://registrar.gwu.edu/cecredentials-validation",
+    credential: "Credential ID CeDiD:26K2LV6AADJT  •  Name: AN",
     honors: [
       "GW Business Fellowship Award — Merit-based, ~$22,000 (35% tuition)",
       "Community Choice Award – Fall 2025 GenAI Case Competition",
@@ -32,6 +34,8 @@ const education = [
     location: "Vellore, India",
     logo: logoVit,
     color: "from-rose-500 to-pink-500",
+    link: "https://www.linkedin.com/in/anesh-t/",
+    credential: null,
     honors: [],
     coursework: [
       "Data Structures & Algorithms", "Object-Oriented Programming",
