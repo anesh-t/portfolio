@@ -14,6 +14,7 @@ const experiences = [
     location: "Washington, DC",
     logo: logoImf,
     color: "from-blue-500 to-cyan-500",
+    link: "https://www.linkedin.com/posts/anesh-t_imf-annualmeetings2025-externship-activity-7357904457663221760-PbXD?utm_source=share&utm_medium=member_desktop&rcm=ACoAADLgq_gB5geiRrJOyPnTiCbtDlCNZYds1p8",
     bullets: [
       "Built Power BI dashboards and Excel trackers for multi-year planning and Annual/Spring Meetings, improving reporting accuracy by 30%.",
       "Developed SQL-based validation workflows (completeness checks, conflict detection, reconciliation) to reduce scheduling/approval errors.",
@@ -28,6 +29,7 @@ const experiences = [
     location: "Washington, DC",
     logo: logoGwu,
     color: "from-indigo-500 to-violet-500",
+    link: "https://www.linkedin.com/posts/anesh-t_datavisualization-analytics-teachingassistant-activity-7291687598748581888-nEec?utm_source=share&utm_medium=member_desktop&rcm=ACoAADLgq_gB5geiRrJOyPnTiCbtDlCNZYds1p8",
     bullets: [
       "Delivered hands-on guidance for graduate-level analytics coursework using Tableau for 40+ students.",
       "Evaluated student dashboards using Tableau and Python (Pandas) to verify KPI relevance and insight clarity.",
@@ -40,6 +42,7 @@ const experiences = [
     location: "Tirupur, India",
     logo: logoThangam,
     color: "from-emerald-500 to-teal-500",
+    link: "https://www.linkedin.com/in/anesh-t/",
     bullets: [
       "Designed SQL-driven Tableau and Excel dashboards for a $5M+ loan portfolio with visibility into delinquency trends and approval status.",
       "Engineered data validation and reconciliation workflows improving reporting accuracy by 20% and reducing loan cycle time by 25%.",
@@ -52,6 +55,7 @@ const experiences = [
     location: "Vellore, India",
     logo: logoVit,
     color: "from-rose-500 to-pink-500",
+    link: "https://www.linkedin.com/posts/anesh-t_frontiers-analyzing-classification-and-activity-7312910389581594626-QPOq?utm_source=share&utm_medium=member_desktop&rcm=ACoAADLgq_gB5geiRrJOyPnTiCbtDlCNZYds1p8",
     bullets: [
       "Contributed to published research on ML-based diabetes prediction in Frontiers in Artificial Intelligence (2024).",
       "Applied Explainable AI techniques (LIME, SHAP) to interpret model decisions and highlight key risk factors.",

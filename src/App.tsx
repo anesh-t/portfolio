@@ -16,6 +16,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <GlobalSoundEffects />
       <BrowserRouter>
         <Header />
         <main>
