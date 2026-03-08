@@ -60,21 +60,34 @@ const SkillsSection = () => (
           {skillCategories.map(({ icon: Icon, title, skills, color }, i) => (
             <motion.div
               key={title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 25, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -4 }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              whileHover={{ y: -6, scale: 1.02 }}
               className="group p-6 rounded-2xl bg-card border border-border shadow-card hover:shadow-card-hover transition-all relative overflow-hidden"
             >
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${color}`} />
-              <Icon className="w-8 h-8 text-accent mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="font-bold text-foreground mb-3">{title}</h3>
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${color} transition-all duration-300 group-hover:h-1.5`} />
+              <motion.div
+                whileHover={{ rotate: 15, scale: 1.2 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Icon className="w-8 h-8 text-accent mb-4 group-hover:scale-110 transition-transform" />
+              </motion.div>
+              <h3 className="font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">{title}</h3>
               <div className="flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                  <span key={skill} className="px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground text-xs border border-border hover:bg-accent/10 hover:text-accent transition-colors cursor-default">
+                {skills.map((skill, idx) => (
+                  <motion.span
+                    key={skill}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 + idx * 0.04 }}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    className="px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground text-xs border border-border hover:bg-accent/10 hover:text-accent transition-colors cursor-default"
+                  >
                     {skill}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>

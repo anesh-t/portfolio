@@ -55,23 +55,31 @@ const OrganizationsSection = () => (
           {organizations.map((org, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 25, scale: 0.97 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              whileHover={{ y: -4 }}
+              transition={{ delay: i * 0.15, duration: 0.6 }}
+              whileHover={{ y: -6, scale: 1.01 }}
               className="group p-6 rounded-2xl bg-card border border-border shadow-card hover:shadow-card-hover transition-all relative overflow-hidden"
             >
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${org.color}`} />
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${org.color} transition-all duration-300 group-hover:h-1.5`} />
 
               <div className="flex items-start gap-4 mb-4">
-                <div className="rounded-xl bg-muted border border-border flex items-center justify-center overflow-hidden shrink-0" style={{ width: '5rem', height: '5rem' }}>
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="rounded-xl bg-muted border border-border flex items-center justify-center overflow-hidden shrink-0 cursor-pointer"
+                  style={{ width: '5rem', height: '5rem' }}
+                >
                   <img src={org.logo} alt={org.organization} className="object-contain" style={{ width: '3.5rem', height: '3.5rem' }} />
-                </div>
+                </motion.div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-foreground group-hover:text-accent transition-colors">{org.role}</h3>
+                  <h3 className="font-bold text-foreground group-hover:text-accent transition-colors duration-300">{org.role}</h3>
                   <p className="text-accent font-semibold text-sm flex items-center gap-1.5">
-                    <Users className="w-3.5 h-3.5" /> {org.organization}
+                    <motion.div whileHover={{ rotate: 15 }} transition={{ type: "spring" }}>
+                      <Users className="w-3.5 h-3.5" />
+                    </motion.div>
+                    {org.organization}
                   </p>
                   <p className="text-xs text-muted-foreground mt-0.5">{org.institution}</p>
                 </div>
@@ -81,22 +89,30 @@ const OrganizationsSection = () => (
                 <span className="font-medium">{org.period}</span>
                 <span>·</span>
                 <span>{org.location}</span>
-                <a
+                <motion.a
+                  whileHover={{ x: 3 }}
                   href={org.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-accent hover:underline"
                 >
                   <ExternalLink className="w-3 h-3" /> LinkedIn
-                </a>
+                </motion.a>
               </div>
 
               <ul className="space-y-2 text-sm text-muted-foreground">
                 {org.bullets.map((b, j) => (
-                  <li key={j} className="flex gap-2">
+                  <motion.li
+                    key={j}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + j * 0.08 }}
+                    className="flex gap-2"
+                  >
                     <span className="text-accent mt-1 shrink-0 text-lg leading-none">•</span>
                     <span>{b}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </motion.div>

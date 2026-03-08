@@ -85,26 +85,33 @@ const ExperienceSection = () => (
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
+                transition={{ delay: i * 0.15, duration: 0.6 }}
                 className="relative md:pl-28"
               >
                 {/* Timeline logo */}
-                <div className="absolute left-0 top-4 w-24 h-24 rounded-2xl bg-card border border-border shadow-card hidden md:flex items-center justify-center overflow-hidden">
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="absolute left-0 top-4 w-24 h-24 rounded-2xl bg-card border border-border shadow-card hidden md:flex items-center justify-center overflow-hidden cursor-pointer"
+                >
                   <img src={exp.logo} alt={exp.company} className="object-contain" style={{ width: exp.logo === logoImf ? '5.5rem' : '4.5rem', height: exp.logo === logoImf ? '5.5rem' : '4.5rem' }} />
-                </div>
+                </motion.div>
 
                 <motion.div
-                  whileHover={{ y: -2 }}
+                  whileHover={{ y: -4 }}
                   className="group p-6 rounded-2xl bg-card border border-border shadow-card hover:shadow-card-hover transition-all relative overflow-hidden"
                 >
                   {/* Color accent */}
-                  <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${exp.color}`} />
+                  <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${exp.color} transition-all duration-300 group-hover:h-1`} />
 
                   {/* Mobile logo */}
                   <div className="flex md:hidden items-center gap-3 mb-3">
-                    <div className="w-14 h-14 rounded-lg bg-muted flex items-center justify-center overflow-hidden">
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      className="w-14 h-14 rounded-lg bg-muted flex items-center justify-center overflow-hidden"
+                    >
                       <img src={exp.logo} alt={exp.company} className="w-11 h-11 object-contain" />
-                    </div>
+                    </motion.div>
                     <div>
                       <p className="text-accent font-semibold text-sm">{exp.company}</p>
                     </div>
@@ -112,9 +119,12 @@ const ExperienceSection = () => (
 
                   <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                     <div>
-                      <h3 className="font-bold text-foreground group-hover:text-accent transition-colors">{exp.role}</h3>
+                      <h3 className="font-bold text-foreground group-hover:text-accent transition-colors duration-300">{exp.role}</h3>
                       <p className="text-accent font-medium text-sm hidden md:flex items-center gap-1.5">
-                        <Briefcase className="w-3.5 h-3.5" /> {exp.company}
+                        <motion.div whileHover={{ rotate: 15 }} transition={{ type: "spring" }}>
+                          <Briefcase className="w-3.5 h-3.5" />
+                        </motion.div>
+                        {exp.company}
                       </p>
                     </div>
                     <div className="text-right text-xs text-muted-foreground">
@@ -124,10 +134,17 @@ const ExperienceSection = () => (
                   </div>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     {exp.bullets.map((b, j) => (
-                      <li key={j} className="flex gap-2">
+                      <motion.li
+                        key={j}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.15 + j * 0.07 }}
+                        className="flex gap-2"
+                      >
                         <span className="text-accent mt-1 shrink-0 text-lg leading-none">•</span>
                         <span>{b}</span>
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </motion.div>
