@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
-import { Camera, Music, Car, Globe } from "lucide-react";
+import { Camera, Music, Car, Globe, Dumbbell, UtensilsCrossed, Gamepad2, Instagram } from "lucide-react";
 import lifestyleImage from "@/assets/lifestyle-anesh.jpg";
 
 const interests = [
+  { icon: Dumbbell, label: "Gym, Volleyball & Yoga" },
+  { icon: UtensilsCrossed, label: "Indian Cuisine" },
   { icon: Car, label: "Cars & Drives" },
-  { icon: Camera, label: "Photography" },
+  { icon: Camera, label: "FPV Drones" },
+  { icon: Music, label: "Tamil Music" },
   { icon: Globe, label: "Travel" },
-  { icon: Music, label: "Music" },
+  { icon: Gamepad2, label: "Chess" },
 ];
 
 const BeyondWorkSection = () => (
@@ -75,13 +78,27 @@ const BeyondWorkSection = () => (
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          <p className="text-white/70 text-lg leading-relaxed mb-8">
-            When I'm not analyzing data or building AI agents, you'll find me behind the wheel exploring new roads,
-            capturing moments through my camera, or discovering hidden gems in new cities. I believe the best insights
-            come from living a full, curious life.
+          <p className="text-white/70 text-lg leading-relaxed mb-6">
+            When I'm not analyzing data or building AI agents, I hit the gym regularly, play volleyball, practice advanced yoga, and enjoy a good chess match. 
+            I love exploring new food — especially Indian cuisine — and I'm a huge fan of South Indian (Tamil) music. 
+            On weekends, you'll find me flying FPV drones, cruising scenic roads, or discovering hidden gems in new cities.
           </p>
 
-          <div className="grid grid-cols-2 gap-4">
+          <a
+            href="https://www.instagram.com/a.n.e.s.h_t/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold mb-8 transition-all hover:scale-105"
+            style={{
+              background: "linear-gradient(135deg, hsl(340 75% 55%), hsl(25 90% 55%), hsl(45 90% 55%))",
+              color: "white",
+            }}
+          >
+            <Instagram className="w-4 h-4" />
+            Follow me on Instagram
+          </a>
+
+          <div className="grid grid-cols-2 gap-3">
             {interests.map(({ icon: Icon, label }, i) => (
               <motion.div
                 key={label}
