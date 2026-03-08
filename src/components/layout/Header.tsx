@@ -205,6 +205,22 @@ const Header = () => {
                   {link.label}
                 </motion.button>
               ))}
+              {/* Beyond Work - unique mobile shortcut */}
+              <motion.button
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.05 }}
+                onClick={() => handleClick("#beyond-work")}
+                className={cn(
+                  "py-3 px-4 rounded-xl text-sm font-medium hover:bg-accent/10 transition-colors text-left flex items-center gap-3 border border-accent/20",
+                  activeSection === "beyond-work" && "text-accent bg-accent/5"
+                )}
+              >
+                <div className="w-8 h-8 rounded-full overflow-hidden ring-2 ring-accent/40 flex-shrink-0">
+                  <img src={lifestyleImage} alt="Beyond work" className="w-full h-full object-cover" />
+                </div>
+                <span>Life Outside the Terminal ✨</span>
+              </motion.button>
               <motion.a
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
