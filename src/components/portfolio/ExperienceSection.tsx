@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Briefcase } from "lucide-react";
+import { Briefcase, ExternalLink } from "lucide-react";
 import BackgroundShapes from "./BackgroundShapes";
 import logoImf from "@/assets/logo-imf.png";
 import logoGwu from "@/assets/logo-gwu.png";
