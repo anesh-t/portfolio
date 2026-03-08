@@ -9,6 +9,8 @@ const highlights = [
   { icon: BookOpen, label: "Published Research", sub: "Frontiers in AI · 26 Citations", color: "from-accent to-rose-500" },
 ];
 
+const tags = ["Data Analytics", "Business Intelligence", "AI-Driven Decision Systems"];
+
 const languages = [
   { lang: "English", level: "Full Professional" },
   { lang: "French", level: "Limited Working" },
@@ -30,16 +32,43 @@ const AboutSection = () => (
         <div className="w-16 h-1 bg-gradient-warm rounded-full mb-8" />
 
         <div className="grid lg:grid-cols-5 gap-10 items-start">
-          {/* Text column - constrained width */}
+          {/* Text column */}
           <div className="lg:col-span-3 space-y-4 text-muted-foreground leading-relaxed font-sans min-w-0">
-            <p className="text-lg font-medium text-foreground">
-              Business Data Analyst at the intersection of core analytics and applied GenAI — turning ambiguous problems into decision-ready insights.
+            <p className="text-xl font-semibold text-foreground">
+              Hi, I'm Anesh Thangaraj.
+            </p>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1.5 rounded-full text-xs font-semibold border"
+                  style={{
+                    background: "hsl(16 84% 62% / 0.1)",
+                    borderColor: "hsl(16 84% 62% / 0.25)",
+                    color: "hsl(16 84% 65%)",
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <p className="break-words">
+              I'm a <strong className="text-foreground">Business Data Analyst</strong> focused on turning complex, ambiguous problems into clear, decision-ready insights.
             </p>
             <p className="break-words">
-              At the <strong className="text-foreground">IMF</strong>, I built Power BI dashboards, SQL validation workflows, and <strong className="text-foreground">FundMate</strong> — an internal Copilot + RAG assistant that cut manual coordination by ~40%.
+              My work sits at the intersection of <strong className="text-foreground">data analytics, operations, and applied AI</strong>. I enjoy building systems that help teams understand what is happening, why it is happening, and what actions they should take next.
             </p>
             <p className="break-words">
-              I hold a <strong className="text-foreground">B.Tech in CS</strong> from VIT and an <strong className="text-foreground">MS in Business Analytics</strong> from GWU (Jan 2026). Published research in <strong className="text-foreground">Frontiers in AI</strong> — 26 citations, 1.4k+ downloads.
+              During my time at the <strong className="text-foreground">International Monetary Fund</strong>, I developed <strong className="text-foreground">Power BI dashboards and analytics workflows</strong> that helped teams monitor operational KPIs and improve coordination across large-scale global meetings. I also built <strong className="text-foreground">FundMate</strong>, an internal <strong className="text-foreground">AI-powered knowledge assistant</strong> designed to simplify access to documentation and reduce manual coordination.
+            </p>
+            <p className="break-words">
+              I hold a <strong className="text-foreground">B.Tech in Computer Science from VIT</strong> and am completing my <strong className="text-foreground">Master's in Business Analytics at The George Washington University</strong>. My projects range from <strong className="text-foreground">SQL-driven data warehouses</strong> and Tableau dashboards to <strong className="text-foreground">AI-enabled analytics systems</strong> that combine structured data with real-world decision workflows.
+            </p>
+            <p className="break-words">
+              More broadly, I'm interested in how <strong className="text-foreground">analytics and AI</strong> can help organizations make faster, clearer, and more informed decisions.
             </p>
 
             {/* Languages */}
