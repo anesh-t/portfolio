@@ -78,41 +78,6 @@ const SkillsSection = () => (
             </motion.div>
           ))}
         </div>
-
-            <a
-              href="https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2024.1421751/full"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-accent hover:underline font-semibold text-sm"
-            >
-              Read Full Paper <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-          </div>
-        </motion.div>
-
-        {/* Awards */}
-        <div className="mt-6 grid sm:grid-cols-2 gap-4">
-          {awards.map((award, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: i === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -3 }}
-              className="p-5 rounded-2xl bg-card border border-border shadow-card hover:shadow-card-hover transition-all relative overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 to-orange-500" />
-              <div className="flex gap-3 items-start">
-                <span className="text-2xl shrink-0">{award.emoji}</span>
-                <div>
-                  <p className="font-bold text-foreground">{award.title}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{award.detail}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </motion.div>
     </div>
   </section>
