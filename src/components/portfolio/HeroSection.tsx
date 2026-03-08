@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Code2, Github, Linkedin, Mail, Terminal } from "lucide-react";
 import heroImage from "@/assets/hero-dogs.jpg";
 
 const HeroSection = () => {
@@ -45,6 +45,8 @@ const HeroSection = () => {
                 { icon: Linkedin, href: "https://linkedin.com/in/anesh-t", label: "LinkedIn" },
                 { icon: Github, href: "https://github.com/anesh-t", label: "GitHub" },
                 { icon: Mail, href: "mailto:aneshraj14@gmail.com", label: "Email" },
+                { icon: Code2, href: "https://www.hackerrank.com/profile/aneshraj14", label: "HackerRank" },
+                { icon: Terminal, href: "https://leetcode.com/u/Anesh_T/", label: "LeetCode" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
