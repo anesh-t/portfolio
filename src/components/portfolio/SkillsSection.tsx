@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Database, Brain, Cloud, BarChart3, Code, Users } from "lucide-react";
+import BackgroundShapes from "./BackgroundShapes";
 
 const skillCategories = [
   {
