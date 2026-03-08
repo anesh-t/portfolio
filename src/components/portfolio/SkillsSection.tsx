@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Database, Brain, Cloud, BarChart3, Code, Users, ExternalLink } from "lucide-react";
+import { Database, Brain, Cloud, BarChart3, Code, Users, ExternalLink, BookOpen, Eye, Download, TrendingUp, Quote } from "lucide-react";
 
 const skillCategories = [
   {
@@ -31,41 +31,6 @@ const skillCategories = [
     icon: Users,
     title: "Business Skills",
     skills: ["Requirements Gathering (BRDs)", "SOPs", "Stakeholder Communication", "Executive Reporting", "Analytics Presentations", "Agile (Jira/Trello)"],
-  },
-];
-
-const certifications = [
-  {
-    emoji: "🎓",
-    title: "MS in Business Analytics",
-    detail: "George Washington University · Jan 2026",
-    link: "https://registrar.gwu.edu/cecredentials-validation",
-  },
-  {
-    emoji: "☁️",
-    title: "AWS Certified Cloud Practitioner",
-    detail: "Amazon Web Services · Valid through Jul 2026",
-  },
-  {
-    emoji: "🤖",
-    title: "What Is Generative AI?",
-    detail: "LinkedIn Learning · Aug 2025",
-    link: "https://www.linkedin.com/learning/certificates/29eb2858b5463b70c646272bcd2b022157ea9047112b7e641838dfa9f00dd86e/",
-  },
-  {
-    emoji: "📊",
-    title: "SmartBridge Analytics & AI Training",
-    detail: "SmartBridge · Analytics & AI Focus",
-  },
-];
-
-const publications = [
-  {
-    emoji: "📄",
-    title: "Published in Frontiers in AI",
-    detail: "ML-Based Diabetes Prediction (2024) · 500+ Downloads",
-    link: "https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2024.1421751/full",
-    coAuthors: "Saravana Kumar I J, Rithik R. Ragupathi, Sundaravelan S",
   },
 ];
 
@@ -119,46 +84,69 @@ const SkillsSection = () => (
           ))}
         </div>
 
-        {/* Certifications */}
-        <div className="mt-12 p-6 rounded-xl bg-card border border-border shadow-card">
-          <h3 className="font-bold text-foreground mb-4">Certifications</h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-            {certifications.map((cert, i) => (
-              <div key={i} className="flex gap-3 items-start">
-                <span className="text-lg shrink-0">{cert.emoji}</span>
-                <div>
-                  <p className="font-medium text-foreground">{cert.title}</p>
-                  <p className="text-xs text-muted-foreground">{cert.detail}</p>
-                  {cert.link && (
-                    <a href={cert.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-accent hover:underline mt-0.5">
-                      Verify <ExternalLink className="w-3 h-3" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
+        {/* Publications - Enhanced */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-12 p-6 md:p-8 rounded-xl bg-card border border-border shadow-card"
+        >
+          <div className="flex items-center gap-2 mb-6">
+            <BookOpen className="w-5 h-5 text-accent" />
+            <h3 className="font-bold text-foreground text-lg">Published Research</h3>
           </div>
-        </div>
 
-        {/* Publications */}
-        <div className="mt-6 p-6 rounded-xl bg-card border border-border shadow-card">
-          <h3 className="font-bold text-foreground mb-4">Publications</h3>
-          {publications.map((pub, i) => (
-            <div key={i} className="flex gap-3 items-start">
-              <span className="text-lg shrink-0">{pub.emoji}</span>
-              <div>
-                <p className="font-medium text-foreground">{pub.title}</p>
-                <p className="text-xs text-muted-foreground">{pub.detail}</p>
-                <p className="text-xs text-muted-foreground mt-0.5">Co-authors: {pub.coAuthors}</p>
-                {pub.link && (
-                  <a href={pub.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-accent hover:underline mt-0.5">
-                    Read Paper <ExternalLink className="w-3 h-3" />
-                  </a>
-                )}
-              </div>
+          <div className="space-y-6">
+            <div>
+              <h4 className="font-semibold text-foreground leading-snug">
+                Analyzing Classification and Feature Selection Strategies for Diabetes Prediction across Diverse Diabetes Datasets
+              </h4>
+              <p className="text-sm text-accent font-medium mt-1">
+                Frontiers in Artificial Intelligence · Aug 21, 2024
+              </p>
+              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                Analyzed machine learning models (RF, XGB, LR, GB, SVM) for diabetes prediction, achieving precision and recall of up to 0.9. Employed feature selection techniques (LIME, SHAP, Chi-square) to identify critical predictors such as age and family history, enhancing model transparency and data-driven decision-making in healthcare.
+              </p>
+              <p className="text-xs text-muted-foreground mt-2">
+                Co-authors: Saravana Kumar I J, Rithik R. Ragupathi, Sundaravelan S
+              </p>
             </div>
-          ))}
-        </div>
+
+            {/* Metrics Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {[
+                { icon: Quote, value: "26", label: "Citations" },
+                { icon: Eye, value: "9.4k", label: "Views" },
+                { icon: Download, value: "1.4k", label: "Downloads" },
+                { icon: TrendingUp, value: "4.7", label: "Impact Factor" },
+              ].map((metric) => (
+                <div
+                  key={metric.label}
+                  className="flex flex-col items-center p-4 rounded-lg bg-muted border border-border text-center"
+                >
+                  <metric.icon className="w-4 h-4 text-accent mb-2" />
+                  <span className="text-xl font-bold text-foreground">{metric.value}</span>
+                  <span className="text-xs text-muted-foreground">{metric.label}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap items-center gap-4 text-sm">
+              <span className="px-3 py-1 rounded-full bg-accent/10 text-accent font-medium text-xs">
+                CiteScore: 7.3
+              </span>
+              <a
+                href="https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2024.1421751/full"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-accent hover:underline font-medium"
+              >
+                Read Full Paper <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Awards */}
         <div className="mt-6 p-6 rounded-xl bg-card border border-border shadow-card">
