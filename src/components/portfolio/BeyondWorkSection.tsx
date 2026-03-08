@@ -98,7 +98,7 @@ const BeyondWorkSection = () => (
             Follow me on Instagram
           </a>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3">
             {interests.map(({ icon: Icon, label }, i) => (
               <motion.div
                 key={label}
