@@ -1,15 +1,29 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Trophy } from "lucide-react";
+import { ExternalLink, Trophy, ChevronDown, ChevronUp } from "lucide-react";
 import projectCfo from "@/assets/project-cfo-assistant.jpg";
 import projectSec from "@/assets/project-sec-analytics.jpg";
 import projectFundmate from "@/assets/project-fundmate.jpg";
 
-const projects = [
+interface Project {
+  title: string;
+  award?: string;
+  period?: string;
+  image?: string;
+  description: string;
+  tech: string[];
+  highlights?: string[];
+  github?: string;
+  featured?: boolean;
+}
+
+const featuredProjects: Project[] = [
   {
     title: "CFO Assistant – AI-Enabled Analytics & Decision Support",
     award: "GW AI Case Competition – Winners",
     period: "Sep 2025 – Dec 2025",
     image: projectCfo,
+    featured: true,
     description:
       "End-to-end AI platform for CFO-style financial analysis across 5 large-cap companies, integrating structured financial data in PostgreSQL + Pgvector with unstructured SEC filings and a Neo4j knowledge graph.",
     tech: ["Python", "LangChain", "Pgvector", "Neo4j", "FastAPI", "AWS Bedrock", "SageMaker"],
@@ -24,6 +38,7 @@ const projects = [
     title: "SEC Financial Analytics Data Warehouse & Visualization",
     period: "Oct 2024 – Nov 2024",
     image: projectSec,
+    featured: true,
     description:
       "Cloud-hosted analytics warehouse on AWS EC2 (PostgreSQL), ingesting and normalizing 480K+ SEC records with ETL transformations and Tableau dashboards.",
     tech: ["AWS EC2", "PostgreSQL", "SQL", "Python", "Tableau"],
@@ -31,12 +46,13 @@ const projects = [
       "Relational schema for historical comparisons and BI consumption",
       "Filing frequency, disclosure patterns, and longitudinal trend analysis",
     ],
-    github: "https://github.com/anesh-t",
+    github: "https://github.com/anesh-t/SEC-Financial-Data-Modeling-Visualization",
   },
   {
     title: "FundMate – Internal Copilot + RAG Assistant",
     period: "Jul 2025 – Dec 2025",
     image: projectFundmate,
+    featured: true,
     description:
       "Built at the IMF: an LLM + RAG powered internal assistant enabling natural-language access to structured data and 10+ institutional documentation sources.",
     tech: ["RAG", "LLM", "Python", "Power BI", "SQL"],
@@ -47,86 +63,228 @@ const projects = [
   },
 ];
 
-const ProjectsSection = () => (
-  <section id="projects" className="py-20 md:py-28 bg-background">
-    <div className="container">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-          Featured <span className="text-accent">Projects</span>
-        </h2>
-        <div className="w-16 h-1 bg-accent rounded-full mb-12" />
+const otherProjects: Project[] = [
+  {
+    title: "FinSight Executive AI – Intelligent Financial Analysis Agent",
+    description:
+      "CFO-style financial analysis agent leveraging AI for intelligent executive-level insights and decision support.",
+    tech: ["Python", "AI", "LLM"],
+    github: "https://github.com/anesh-t/FinSight-Executive-AI-Intelligent-Financial-Analysis-Agent",
+  },
+  {
+    title: "Applied Econometrics – IMF-Style Analysis",
+    description:
+      "Collection of applied econometric exercises using Stata including regression analysis, instrumental variables, time-series models, discrete choice models, and public economics applications.",
+    tech: ["Stata", "Econometrics"],
+    github: "https://github.com/anesh-t/applied-econometrics-imf-style-analysis",
+  },
+  {
+    title: "Opportunity Atlas – Upward Mobility in Cherry Hill, NJ",
+    description:
+      "Neighborhood-level analysis of upward mobility using Raj Chetty's Opportunity Atlas dataset, studying tract-level variation in Cherry Hill, NJ.",
+    tech: ["Stata", "Data Analysis"],
+    github: "https://github.com/anesh-t/Opportunity-Atlas-Upward-Mobility-in-Cherry-Hill-NJ",
+  },
+  {
+    title: "Diabetes Prediction with Explainable AI",
+    description:
+      "Published research (Frontiers in AI) analyzing classification and feature selection strategies for diabetes prediction with explainable AI techniques.",
+    tech: ["Python", "ML", "XAI"],
+    github: "https://github.com/anesh-t/Diabetes_Prediction_with_Feature_Selection_and_Explainable_AI",
+  },
+  {
+    title: "Financial Client Attrition Forecasting System",
+    description:
+      "Predictive model to forecast likelihood of banking clients discontinuing their relationship, enabling proactive retention strategies.",
+    tech: ["Python", "ML", "Jupyter"],
+    github: "https://github.com/anesh-t/Financial-Client-Attrition-Forecasting-System",
+  },
+  {
+    title: "Capital Bikeshare Forecasting – Cost-Based Optimization",
+    description:
+      "Comparing predictive models for bike-sharing demand forecasting with cost-based optimization. ML II course project at GWU.",
+    tech: ["Python", "ML", "Jupyter"],
+    github: "https://github.com/anesh-t/Capital-Bikeshare-Forecasting-Comparing-Predictive-Models-and-Cost-Based-Optimization",
+  },
+  {
+    title: "SEC 10-K Risk Factor Title Extraction",
+    description:
+      "Automated extraction of Item 1A Risk Factor titles from SEC 10-K filings with structured CSV output.",
+    tech: ["Python", "NLP"],
+    github: "https://github.com/anesh-t/SEC-10-K-Risk-Factor-Title-Extraction",
+  },
+  {
+    title: "Red Brand Canners – LP Optimization Case Study",
+    description:
+      "Operations Research linear programming case study with optimization code, workshop report, and documentation.",
+    tech: ["Python", "OR", "LP"],
+    github: "https://github.com/anesh-t/Red-Brand-Canners-Optimization-Workshop-An-Operations-Research-Linear-Programming-Case-Study",
+  },
+  {
+    title: "Big Data Pipeline – U.S. Political Donation Insights",
+    description:
+      "Apache Spark pipeline on AWS exploring individual contributions to U.S. Federal Committees, extracting insights from millions of records.",
+    tech: ["Spark", "AWS", "Big Data"],
+    github: "https://github.com/anesh-t/Big-Data-Pipeline-for-U.S.-Political-Donation-Insights-Using-Apache-Spark",
+  },
+  {
+    title: "Predicting Urban Mobility – Capital Bikeshare",
+    description:
+      "Supervised ML pipeline using Capital Bikeshare data with regression, classification, and regularization techniques.",
+    tech: ["Python", "ML", "Jupyter"],
+    github: "https://github.com/anesh-t/Predicting-Urban-Mobility-with-Capital-Bikeshare-Data-A-Supervised-Learning-Approach",
+  },
+  {
+    title: "Walmart Revenue Forecasting & Pricing Optimization",
+    description:
+      "Data-driven marketing and pricing optimization using R — customer segmentation, risk analysis, and predictive modeling for Walmart's rollback strategies.",
+    tech: ["R", "ML", "Marketing"],
+    github: "https://github.com/anesh-t/Rollback-Reimagined-Revenue-Forecasting-and-Pricing-Optimization-at-Walmart",
+  },
+];
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="group rounded-xl bg-card border border-border shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all flex flex-col overflow-hidden"
-            >
-              {/* Project Thumbnail */}
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
-                {project.award && (
-                  <div className="absolute top-3 left-3 flex items-center gap-1.5 text-amber bg-card/90 backdrop-blur-sm text-xs font-semibold px-3 py-1 rounded-full">
-                    <Trophy className="w-3.5 h-3.5" />
-                    {project.award}
-                  </div>
-                )}
-              </div>
-
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="font-bold text-foreground mb-1 group-hover:text-accent transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-xs text-muted-foreground mb-3">{project.period}</p>
-                <p className="text-sm text-muted-foreground mb-4 flex-1">{project.description}</p>
-
-                <ul className="space-y-1.5 text-xs text-muted-foreground mb-4">
-                  {project.highlights.map((h, j) => (
-                    <li key={j} className="flex gap-1.5">
-                      <span className="text-accent">✓</span> {h}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {project.tech.map((t) => (
-                    <span key={t} className="px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground text-xs">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm text-accent hover:underline mt-auto"
-                  >
-                    View on GitHub <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                )}
-              </div>
-            </motion.div>
+const FeaturedCard = ({ project, i }: { project: Project; i: number }) => (
+  <motion.div
+    key={i}
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay: i * 0.15 }}
+    className="group rounded-xl bg-card border border-border shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all flex flex-col overflow-hidden"
+  >
+    {project.image && (
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+        {project.award && (
+          <div className="absolute top-3 left-3 flex items-center gap-1.5 text-amber bg-card/90 backdrop-blur-sm text-xs font-semibold px-3 py-1 rounded-full">
+            <Trophy className="w-3.5 h-3.5" />
+            {project.award}
+          </div>
+        )}
+      </div>
+    )}
+    <div className="p-6 flex flex-col flex-1">
+      <h3 className="font-bold text-foreground mb-1 group-hover:text-accent transition-colors">
+        {project.title}
+      </h3>
+      {project.period && (
+        <p className="text-xs text-muted-foreground mb-3">{project.period}</p>
+      )}
+      <p className="text-sm text-muted-foreground mb-4 flex-1">{project.description}</p>
+      {project.highlights && (
+        <ul className="space-y-1.5 text-xs text-muted-foreground mb-4">
+          {project.highlights.map((h, j) => (
+            <li key={j} className="flex gap-1.5">
+              <span className="text-accent">✓</span> {h}
+            </li>
           ))}
-        </div>
-      </motion.div>
+        </ul>
+      )}
+      <div className="flex flex-wrap gap-1.5 mb-4">
+        {project.tech.map((t) => (
+          <span key={t} className="px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground text-xs">
+            {t}
+          </span>
+        ))}
+      </div>
+      {project.github && (
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-sm text-accent hover:underline mt-auto"
+        >
+          View on GitHub <ExternalLink className="w-3.5 h-3.5" />
+        </a>
+      )}
     </div>
-  </section>
+  </motion.div>
 );
+
+const CompactCard = ({ project, i }: { project: Project; i: number }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 12 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay: i * 0.05 }}
+    className="group rounded-lg bg-card border border-border p-5 hover:shadow-card-hover hover:-translate-y-0.5 transition-all flex flex-col"
+  >
+    <h3 className="font-semibold text-sm text-foreground mb-2 group-hover:text-accent transition-colors">
+      {project.title}
+    </h3>
+    <p className="text-xs text-muted-foreground mb-3 flex-1">{project.description}</p>
+    <div className="flex flex-wrap gap-1.5 mb-3">
+      {project.tech.map((t) => (
+        <span key={t} className="px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground text-[11px]">
+          {t}
+        </span>
+      ))}
+    </div>
+    {project.github && (
+      <a
+        href={project.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 text-xs text-accent hover:underline mt-auto"
+      >
+        View on GitHub <ExternalLink className="w-3 h-3" />
+      </a>
+    )}
+  </motion.div>
+);
+
+const ProjectsSection = () => {
+  const [showAll, setShowAll] = useState(false);
+
+  return (
+    <section id="projects" className="py-20 md:py-28 bg-background">
+      <div className="container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+            Featured <span className="text-accent">Projects</span>
+          </h2>
+          <div className="w-16 h-1 bg-accent rounded-full mb-12" />
+
+          {/* Featured Projects */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {featuredProjects.map((project, i) => (
+              <FeaturedCard key={i} project={project} i={i} />
+            ))}
+          </div>
+
+          {/* Other Projects */}
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-xl md:text-2xl font-display font-bold text-foreground">
+              More <span className="text-accent">Projects</span>
+            </h3>
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="inline-flex items-center gap-1.5 text-sm text-accent hover:underline"
+            >
+              {showAll ? "Show less" : `Show all (${otherProjects.length})`}
+              {showAll ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            </button>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {(showAll ? otherProjects : otherProjects.slice(0, 6)).map((project, i) => (
+              <CompactCard key={i} project={project} i={i} />
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 export default ProjectsSection;
