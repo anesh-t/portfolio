@@ -153,7 +153,11 @@ const CompactCard = ({ project, i }: { project: Project; i: number }) => (
     className="group rounded-xl bg-card border border-border p-5 hover:shadow-card-hover transition-all flex flex-col"
   >
     <h3 className="font-semibold text-sm text-foreground mb-2 group-hover:text-accent transition-colors">
-      {project.title}
+      {project.github ? (
+        <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+          {project.title}
+        </a>
+      ) : project.title}
     </h3>
     <p className="text-xs text-muted-foreground mb-3 flex-1">{project.description}</p>
     <div className="flex flex-wrap gap-1.5 mb-3">

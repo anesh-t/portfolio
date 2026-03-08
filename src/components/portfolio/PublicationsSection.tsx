@@ -58,7 +58,9 @@ const PublicationsSection = () => (
             transition={{ delay: 0.3 }}
             className="text-xl font-bold text-foreground mt-4 leading-snug"
           >
-            Analyzing Classification and Feature Selection Strategies for Diabetes Prediction across Diverse Diabetes Datasets
+            <a href="https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2024.1421751/full" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+              Analyzing Classification and Feature Selection Strategies for Diabetes Prediction across Diverse Diabetes Datasets
+            </a>
           </motion.h3>
           <motion.p
             initial={{ opacity: 0 }}
